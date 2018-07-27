@@ -14,11 +14,11 @@ import static java.util.Collections.*;
 public class ClassicCJKAnalysisPlugin extends Plugin implements AnalysisPlugin {
     @Override
     public Map<String, AnalysisModule.AnalysisProvider<TokenizerFactory>> getTokenizers() {
-        return singletonMap("classic_cjk_tokenizer", ClassicCJKTokenizerFactory::new);
+        return singletonMap( "classic_cjk_tokenizer", ClassicCJKTokenizerFactory::new );
     }
 
     @Override
     public Map<String, AnalysisModule.AnalysisProvider<AnalyzerProvider<? extends Analyzer>>> getAnalyzers() {
-        return singletonMap("classic_cjk_analyzer", ClassicCJKAnalyzerProvider::new);
+        return singletonMap( "classic_cjk_analyzer", ClassicCJKAnalyzerProvider::new );
     }
 }

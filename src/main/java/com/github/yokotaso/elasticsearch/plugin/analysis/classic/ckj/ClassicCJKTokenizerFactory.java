@@ -10,7 +10,7 @@ import org.elasticsearch.index.analysis.AbstractTokenizerFactory;
 class ClassicCJKTokenizerFactory extends AbstractTokenizerFactory {
 
     ClassicCJKTokenizerFactory(IndexSettings indexSettings, Environment environment, String s, Settings settings) {
-        super(indexSettings, s, settings);
+        super( indexSettings, s, settings );
     }
 
     @Override

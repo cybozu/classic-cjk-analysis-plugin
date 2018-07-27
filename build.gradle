@@ -1,6 +1,8 @@
 plugins {
     id 'java-library'
+    id "com.diffplug.gradle.spotless" version "3.14.0"
 }
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -47,3 +49,32 @@ task zipPlugin(type: Zip) {
     destinationDir = file("$buildDir/dist") 
 }
 
+spotless {
+    java {
+        target 'src/main/java/com/**/*.java', 'src/test/java/com/**/*.java'
+
+        importOrder('' /** All Other imports */,  
+                     '\n', 
+                     'java', 
+                     '\n', 
+                     'net', 
+                     '\n', 
+                     'javax', 
+                     '\n', 
+                     'junit', 
+                     'lombok', 
+                     'mockit', 
+                     '\n', 
+                     'org', 
+                     '\n', 
+                     'au', 
+                     '\n', 
+                     'com', 
+                     '\n', 
+                     'static '/** All Other static imports */) 
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+        eclipse().configFile 'etc/eclipse-formatter-config.xml'
+    }
+}
