@@ -1,3 +1,4 @@
+// @formatter:off
 package org.apache.lucene.analysis.cjk;
 
 /*
@@ -18,17 +19,16 @@ package org.apache.lucene.analysis.cjk;
  */
 
 import java.io.IOException;
-import java.io.Reader;
 
 import org.apache.lucene.analysis.Tokenizer;
-import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.TypeAttribute;
-import org.apache.lucene.util.AttributeFactory;
 
 /**
+ * <a href="https://github.com/apache/lucene-solr/blob/releases/lucene-solr/4.7.2/lucene/analysis/common/src/java/org/apache/lucene/analysis/cjk/CJKTokenizer.java">Copy from CJKTokenizer</a>
  * ClassicCJKTokenizer is designed for Chinese, Japanese, and Korean languages.
- * <p>  
+ * <p>
  * The tokens returned are every two adjacent characters with overlap match.
  * </p>
  * <p>
@@ -49,16 +49,16 @@ public final class ClassicCJKTokenizer extends Tokenizer {
     //~ Static fields/initializers ---------------------------------------------
     /** Word token type */
     static final int WORD_TYPE = 0;
-  
+
     /** Single byte token type */
     static final int SINGLE_TOKEN_TYPE = 1;
 
     /** Double byte token type */
     static final int DOUBLE_TOKEN_TYPE = 2;
-  
+
     /** Names for token types */
     static final String[] TOKEN_TYPE_NAMES = { "word", "single", "double" };
-  
+
     /** Max word length */
     private static final int MAX_WORD_LEN = 255;
 
@@ -101,7 +101,7 @@ public final class ClassicCJKTokenizer extends Tokenizer {
     private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
     private final OffsetAttribute offsetAtt = addAttribute(OffsetAttribute.class);
     private final TypeAttribute typeAtt = addAttribute(TypeAttribute.class);
-    
+
     //~ Constructors -----------------------------------------------------------
 
     /**
@@ -267,7 +267,7 @@ public final class ClassicCJKTokenizer extends Tokenizer {
                 }
             }
         }
-      
+
         if (length > 0) {
           termAtt.copyBuffer(buffer, 0, length);
           offsetAtt.setOffset(correctOffset(start), correctOffset(start+length));
@@ -282,7 +282,7 @@ public final class ClassicCJKTokenizer extends Tokenizer {
         // return an empty string)
       }
     }
-    
+
     @Override
     public final void end() throws IOException {
       super.end();
@@ -290,7 +290,7 @@ public final class ClassicCJKTokenizer extends Tokenizer {
       final int finalOffset = correctOffset(offset);
       this.offsetAtt.setOffset(finalOffset, finalOffset);
     }
-    
+
     @Override
     public void reset() throws IOException {
       super.reset();
@@ -299,3 +299,4 @@ public final class ClassicCJKTokenizer extends Tokenizer {
       tokenType = WORD_TYPE;
     }
 }
+// @formatter:on

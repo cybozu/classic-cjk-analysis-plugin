@@ -1,3 +1,4 @@
+// @formatter:off
 package org.apache.lucene.analysis.cjk;
 
 /*
@@ -28,6 +29,7 @@ import org.apache.lucene.analysis.core.StopFilter;
 import org.apache.lucene.analysis.standard.StandardTokenizer;
 
 /**
+ * <a href="https://github.com/apache/lucene-solr/blob/releases/lucene-solr/4.7.2/lucene/analysis/common/src/java/org/apache/lucene/analysis/cjk/CJKAnalyzer.java">Copy from CJKAnalyzer</a>
  * An {@link Analyzer} that tokenizes text with {@link StandardTokenizer},
  * normalizes content with {@link CJKWidthFilter}, folds case with
  * {@link LowerCaseFilter}, forms bigrams of CJK with {@link CJKBigramFilter},
@@ -80,3 +82,4 @@ public final class ClassicCJKAnalyzer extends StopwordAnalyzerBase {
         return new TokenStreamComponents(source, new StopFilter(source, stopwords));
     }
 }
+// @formatter:on

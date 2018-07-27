@@ -51,8 +51,6 @@ task zipPlugin(type: Zip) {
 
 spotless {
     java {
-        target 'src/main/java/com/**/*.java', 'src/test/java/com/**/*.java'
-
         importOrder('' /** All Other imports */,  
                      '\n', 
                      'java', 
