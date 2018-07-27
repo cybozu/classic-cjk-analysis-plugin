@@ -27,7 +27,7 @@ import org.apache.lucene.analysis.tokenattributes.TypeAttribute;
 import org.apache.lucene.util.AttributeFactory;
 
 /**
- * CJKTokenizer is designed for Chinese, Japanese, and Korean languages.
+ * ClassicCJKTokenizer is designed for Chinese, Japanese, and Korean languages.
  * <p>  
  * The tokens returned are every two adjacent characters with overlap match.
  * </p>
@@ -45,7 +45,7 @@ import org.apache.lucene.util.AttributeFactory;
  * href="http://www.google.com/search?q=word+chinese+segment">google</a>
  *
  */
-public final class CJKTokenizer extends Tokenizer {
+public final class ClassicCJKTokenizer extends Tokenizer {
     //~ Static fields/initializers ---------------------------------------------
     /** Word token type */
     static final int WORD_TYPE = 0;
@@ -108,7 +108,7 @@ public final class CJKTokenizer extends Tokenizer {
      * Construct a token stream processing the given input.
      *
      */
-    public CJKTokenizer() {
+    public ClassicCJKTokenizer() {
       super();
     }
 

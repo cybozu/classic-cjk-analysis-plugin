@@ -1,7 +1,7 @@
-package com.github.yokotaso.elasticsearch.plugin.classic.ckj.tokenizer;
+package com.github.yokotaso.elasticsearch.plugin.analysis.classic.ckj;
 
 import org.apache.lucene.analysis.Tokenizer;
-import org.apache.lucene.analysis.cjk.CJKTokenizer;
+import org.apache.lucene.analysis.cjk.ClassicCJKTokenizer;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.env.Environment;
 import org.elasticsearch.index.IndexSettings;
@@ -15,6 +15,6 @@ class ClassicCJKTokenizerFactory extends AbstractTokenizerFactory {
 
     @Override
     public Tokenizer create() {
-        return new CJKTokenizer();
+        return new ClassicCJKTokenizer();
     }
 }
