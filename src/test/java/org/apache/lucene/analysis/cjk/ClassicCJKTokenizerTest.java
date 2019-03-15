@@ -302,7 +302,7 @@ public class ClassicCJKTokenizerTest extends BaseTokenStreamTestCase {
             new TestToken[] { newToken( "java", 0, 4, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
                 newToken( "c1c2c3", 5, 11, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ) } );
 
-        // # _ , はトークナイズされる
+        // # _ , + はトークナイズされる
         checkCJKToken(
             "＃ハッシュ",
             new TestToken[] { newToken( "#", 0, 1, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
@@ -321,6 +321,21 @@ public class ClassicCJKTokenizerTest extends BaseTokenStreamTestCase {
             new TestToken[] { newToken( "_", 0, 1, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
                 newToken( "アン", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
                 newToken( "ンダ", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) } );
+
+        // #, _, + と半角英数は分割されない
+        checkCJKToken(
+                "#hash",
+                new TestToken[] { newToken( "#hash", 0, 5, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE )} );
+
+        checkCJKToken(
+                "+plus",
+                new TestToken[] { newToken( "+plus", 0, 5, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE )} );
+
+        checkCJKToken(
+                "_underscore_",
+                new TestToken[] { newToken( "_underscore_", 0, 12, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE )} );
+
+
 
         // CJK文字はバイグラム分割
         checkCJKToken(
