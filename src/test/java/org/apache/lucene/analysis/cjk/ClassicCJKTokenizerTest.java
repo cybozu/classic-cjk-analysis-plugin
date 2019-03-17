@@ -1,4 +1,3 @@
-// @formatter:off
 package org.apache.lucene.analysis.cjk;
 
 /*
@@ -26,7 +25,9 @@ import org.apache.lucene.analysis.CharArraySet;
 import org.junit.Test;
 
 /**
- * <a href="https://github.com/apache/lucene-solr/blob/releases/lucene-solr/4.7.2/lucene/analysis/common/src/test/org/apache/lucene/analysis/cjk/TestCJKTokenizer.java">Copy From TestCJKTokenizer</a>
+ * <a href=
+ * "https://github.com/apache/lucene-solr/blob/releases/lucene-solr/4.7.2/lucene/analysis/common/src/test/org/apache/lucene/analysis/cjk/TestCJKTokenizer.java">Copy
+ * From TestCJKTokenizer</a>
  */
 public class ClassicCJKTokenizerTest extends BaseTokenStreamTestCase {
 
@@ -47,130 +48,120 @@ public class ClassicCJKTokenizerTest extends BaseTokenStreamTestCase {
     }
 
     public void checkCJKToken(final String str, final TestToken[] out_tokens) throws IOException {
-        Analyzer analyzer = new ClassicCJKAnalyzer(CharArraySet.EMPTY_SET);
+        Analyzer analyzer = new ClassicCJKAnalyzer( CharArraySet.EMPTY_SET );
         String terms[] = new String[out_tokens.length];
         int startOffsets[] = new int[out_tokens.length];
         int endOffsets[] = new int[out_tokens.length];
         String types[] = new String[out_tokens.length];
-        for (int i = 0; i < out_tokens.length; i++) {
+        for ( int i = 0; i < out_tokens.length; i++ ) {
             terms[i] = out_tokens[i].termText;
             startOffsets[i] = out_tokens[i].start;
             endOffsets[i] = out_tokens[i].end;
             types[i] = out_tokens[i].type;
         }
-        assertAnalyzesTo(analyzer, str, terms, startOffsets, endOffsets, types, null);
+        assertAnalyzesTo( analyzer, str, terms, startOffsets, endOffsets, types, null );
     }
 
-    public void checkCJKTokenReusable(final Analyzer a, final String str, final TestToken[] out_tokens) throws IOException {
-        Analyzer analyzer = new ClassicCJKAnalyzer(CharArraySet.EMPTY_SET);
+    public void checkCJKTokenReusable(final Analyzer a, final String str, final TestToken[] out_tokens)
+        throws IOException {
+        Analyzer analyzer = new ClassicCJKAnalyzer( CharArraySet.EMPTY_SET );
         String terms[] = new String[out_tokens.length];
         int startOffsets[] = new int[out_tokens.length];
         int endOffsets[] = new int[out_tokens.length];
         String types[] = new String[out_tokens.length];
-        for (int i = 0; i < out_tokens.length; i++) {
+        for ( int i = 0; i < out_tokens.length; i++ ) {
             terms[i] = out_tokens[i].termText;
             startOffsets[i] = out_tokens[i].start;
             endOffsets[i] = out_tokens[i].end;
             types[i] = out_tokens[i].type;
         }
-        assertAnalyzesTo(analyzer, str, terms, startOffsets, endOffsets, types, null);
+        assertAnalyzesTo( analyzer, str, terms, startOffsets, endOffsets, types, null );
     }
 
     @Test
     public void testJa1() throws IOException {
         String str = "\u4e00\u4e8c\u4e09\u56db\u4e94\u516d\u4e03\u516b\u4e5d\u5341";
 
-        TestToken[] out_tokens = {
-                newToken("\u4e00\u4e8c", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u4e8c\u4e09", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u4e09\u56db", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u56db\u4e94", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u4e94\u516d", 4, 6, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u516d\u4e03", 5, 7, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u4e03\u516b", 6, 8, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u516b\u4e5d", 7, 9, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u4e5d\u5341", 8,10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE)
-        };
-        checkCJKToken(str, out_tokens);
+        TestToken[] out_tokens = { newToken( "\u4e00\u4e8c", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u4e8c\u4e09", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u4e09\u56db", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u56db\u4e94", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u4e94\u516d", 4, 6, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u516d\u4e03", 5, 7, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u4e03\u516b", 6, 8, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u516b\u4e5d", 7, 9, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u4e5d\u5341", 8, 10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) };
+        checkCJKToken( str, out_tokens );
     }
 
     @Test
     public void testJa2() throws IOException {
         String str = "\u4e00 \u4e8c\u4e09\u56db \u4e94\u516d\u4e03\u516b\u4e5d \u5341";
 
-        TestToken[] out_tokens = {
-                newToken("\u4e00", 0, 1, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u4e8c\u4e09", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u4e09\u56db", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u4e94\u516d", 6, 8, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u516d\u4e03", 7, 9, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u4e03\u516b", 8, 10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u516b\u4e5d", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u5341", 12,13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE)
-        };
-        checkCJKToken(str, out_tokens);
+        TestToken[] out_tokens = { newToken( "\u4e00", 0, 1, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u4e8c\u4e09", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u4e09\u56db", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u4e94\u516d", 6, 8, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u516d\u4e03", 7, 9, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u4e03\u516b", 8, 10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u516b\u4e5d", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u5341", 12, 13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) };
+        checkCJKToken( str, out_tokens );
     }
 
     @Test
     public void testC() throws IOException {
         String str = "abc defgh ijklmn opqrstu vwxy z";
 
-        TestToken[] out_tokens = {
-                newToken("abc", 0, 3, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("defgh", 4, 9, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("ijklmn", 10, 16, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("opqrstu", 17, 24, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("vwxy", 25, 29, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("z", 30, 31, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-        };
-        checkCJKToken(str, out_tokens);
+        TestToken[] out_tokens = { newToken( "abc", 0, 3, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "defgh", 4, 9, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "ijklmn", 10, 16, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "opqrstu", 17, 24, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "vwxy", 25, 29, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "z", 30, 31, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ), };
+        checkCJKToken( str, out_tokens );
     }
 
     @Test
     public void testMix() throws IOException {
         String str = "\u3042\u3044\u3046\u3048\u304aabc\u304b\u304d\u304f\u3051\u3053";
 
-        TestToken[] out_tokens = {
-                newToken("\u3042\u3044", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3044\u3046", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3046\u3048", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3048\u304a", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("abc", 5, 8, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("\u304b\u304d", 8, 10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u304d\u304f", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u304f\u3051", 10,12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3051\u3053", 11,13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE)
-        };
-        checkCJKToken(str, out_tokens);
+        TestToken[] out_tokens = { newToken( "\u3042\u3044", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3044\u3046", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3046\u3048", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3048\u304a", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "abc", 5, 8, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "\u304b\u304d", 8, 10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u304d\u304f", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u304f\u3051", 10, 12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3051\u3053", 11, 13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) };
+        checkCJKToken( str, out_tokens );
     }
 
     @Test
     public void testMix2() throws IOException {
         String str = "\u3042\u3044\u3046\u3048\u304aab\u3093c\u304b\u304d\u304f\u3051 \u3053";
 
-        TestToken[] out_tokens = {
-                newToken("\u3042\u3044", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3044\u3046", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3046\u3048", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3048\u304a", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("ab", 5, 7, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("\u3093", 7, 8, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("c", 8, 9, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("\u304b\u304d", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u304d\u304f", 10, 12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u304f\u3051", 11,13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3053", 14,15, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE)
-        };
-        checkCJKToken(str, out_tokens);
+        TestToken[] out_tokens = { newToken( "\u3042\u3044", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3044\u3046", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3046\u3048", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3048\u304a", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "ab", 5, 7, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "\u3093", 7, 8, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "c", 8, 9, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "\u304b\u304d", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u304d\u304f", 10, 12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u304f\u3051", 11, 13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3053", 14, 15, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) };
+        checkCJKToken( str, out_tokens );
     }
+
     @Test
     public void testSingleChar() throws IOException {
         String str = "\u4e00";
 
-        TestToken[] out_tokens = {
-                newToken("\u4e00", 0, 1, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-        };
-        checkCJKToken(str, out_tokens);
+        TestToken[] out_tokens = { newToken( "\u4e00", 0, 1, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ), };
+        checkCJKToken( str, out_tokens );
     }
 
     /*
@@ -179,11 +170,9 @@ public class ClassicCJKTokenizerTest extends BaseTokenStreamTestCase {
     @Test
     public void testFullWidth() throws Exception {
         String str = "Ｔｅｓｔ １２３４";
-        TestToken[] out_tokens = {
-                newToken("test", 0, 4, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("1234", 5, 9, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE)
-        };
-        checkCJKToken(str, out_tokens);
+        TestToken[] out_tokens = { newToken( "test", 0, 4, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "1234", 5, 9, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ) };
+        checkCJKToken( str, out_tokens );
     }
 
     /*
@@ -192,44 +181,39 @@ public class ClassicCJKTokenizerTest extends BaseTokenStreamTestCase {
     @Test
     public void testNonIdeographic() throws Exception {
         String str = "\u4e00 روبرت موير";
-        TestToken[] out_tokens = {
-                newToken("\u4e00", 0, 1, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("رو", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("وب", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("بر", 4, 6, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("رت", 5, 7, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("مو", 8, 10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("وي", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("ير", 10, 12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE)
-        };
-        checkCJKToken(str, out_tokens);
+        TestToken[] out_tokens = { newToken( "\u4e00", 0, 1, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "رو", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "وب", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "بر", 4, 6, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "رت", 5, 7, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "مو", 8, 10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "وي", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "ير", 10, 12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) };
+        checkCJKToken( str, out_tokens );
     }
 
     /*
-     * Non-english text with nonletters (non-spacing marks,etc) is treated as C1C2 C2C3,
-     * except for words are split around non-letters.
+     * Non-english text with nonletters (non-spacing marks,etc) is treated as C1C2 C2C3, except for words are split
+     * around non-letters.
      */
     @Test
     public void testNonIdeographicNonLetter() throws Exception {
         String str = "\u4e00 رُوبرت موير";
-        TestToken[] out_tokens = {
-                newToken("\u4e00", 0, 1, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("ر", 2, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("وب", 4, 6, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("بر", 5, 7, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("رت", 6, 8, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("مو", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("وي", 10, 12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("ير", 11, 13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE)
-        };
-        checkCJKToken(str, out_tokens);
+        TestToken[] out_tokens = { newToken( "\u4e00", 0, 1, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "ر", 2, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "وب", 4, 6, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "بر", 5, 7, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "رت", 6, 8, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "مو", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "وي", 10, 12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "ير", 11, 13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) };
+        checkCJKToken( str, out_tokens );
     }
 
     @Test
     public void testTokenStream() throws Exception {
         Analyzer analyzer = new CJKAnalyzer();
-        assertAnalyzesTo(analyzer, "\u4e00\u4e01\u4e02",
-                new String[] { "\u4e00\u4e01", "\u4e01\u4e02"});
+        assertAnalyzesTo( analyzer, "\u4e00\u4e01\u4e02", new String[] { "\u4e00\u4e01", "\u4e01\u4e02" } );
     }
 
     @Test
@@ -237,34 +221,30 @@ public class ClassicCJKTokenizerTest extends BaseTokenStreamTestCase {
         Analyzer analyzer = new CJKAnalyzer();
         String str = "\u3042\u3044\u3046\u3048\u304aabc\u304b\u304d\u304f\u3051\u3053";
 
-        TestToken[] out_tokens = {
-                newToken("\u3042\u3044", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3044\u3046", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3046\u3048", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3048\u304a", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("abc", 5, 8, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("\u304b\u304d", 8, 10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u304d\u304f", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u304f\u3051", 10,12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3051\u3053", 11,13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE)
-        };
-        checkCJKTokenReusable(analyzer, str, out_tokens);
+        TestToken[] out_tokens = { newToken( "\u3042\u3044", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3044\u3046", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3046\u3048", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3048\u304a", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "abc", 5, 8, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "\u304b\u304d", 8, 10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u304d\u304f", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u304f\u3051", 10, 12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3051\u3053", 11, 13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) };
+        checkCJKTokenReusable( analyzer, str, out_tokens );
 
         str = "\u3042\u3044\u3046\u3048\u304aab\u3093c\u304b\u304d\u304f\u3051 \u3053";
-        TestToken[] out_tokens2 = {
-                newToken("\u3042\u3044", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3044\u3046", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3046\u3048", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3048\u304a", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("ab", 5, 7, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("\u3093", 7, 8, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("c", 8, 9, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("\u304b\u304d", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u304d\u304f", 10, 12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u304f\u3051", 11,13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("\u3053", 14,15, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE)
-        };
-        checkCJKTokenReusable(analyzer, str, out_tokens2);
+        TestToken[] out_tokens2 = { newToken( "\u3042\u3044", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3044\u3046", 1, 3, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3046\u3048", 2, 4, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3048\u304a", 3, 5, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "ab", 5, 7, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "\u3093", 7, 8, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "c", 8, 9, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+            newToken( "\u304b\u304d", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u304d\u304f", 10, 12, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u304f\u3051", 11, 13, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+            newToken( "\u3053", 14, 15, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) };
+        checkCJKTokenReusable( analyzer, str, out_tokens2 );
     }
 
     /**
@@ -272,26 +252,23 @@ public class ClassicCJKTokenizerTest extends BaseTokenStreamTestCase {
      */
     @Test
     public void testFinalOffset() throws IOException {
-        checkCJKToken("あい", new TestToken[] {
-                newToken("あい", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE) });
-        checkCJKToken("あい   ", new TestToken[] {
-                newToken("あい", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE) });
-        checkCJKToken("test", new TestToken[] {
-                newToken("test", 0, 4, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE) });
-        checkCJKToken("test   ", new TestToken[] {
-                newToken("test", 0, 4, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE) });
-        checkCJKToken("あいtest", new TestToken[] {
-                newToken("あい", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE),
-                newToken("test", 2, 6, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE) });
-        checkCJKToken("testあい    ", new TestToken[] {
-                newToken("test", 0, 4, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE),
-                newToken("あい", 4, 6, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE) });
+        checkCJKToken( "あい", new TestToken[] { newToken( "あい", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) } );
+        checkCJKToken( "あい   ", new TestToken[] { newToken( "あい", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) } );
+        checkCJKToken( "test", new TestToken[] { newToken( "test", 0, 4, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ) } );
+        checkCJKToken( "test   ", new TestToken[] { newToken( "test", 0, 4, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ) } );
+        checkCJKToken(
+            "あいtest",
+            new TestToken[] { newToken( "あい", 0, 2, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
+                newToken( "test", 2, 6, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ) } );
+        checkCJKToken(
+            "testあい    ",
+            new TestToken[] { newToken( "test", 0, 4, ClassicCJKTokenizer.SINGLE_TOKEN_TYPE ),
+                newToken( "あい", 4, 6, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) } );
     }
 
     /** blast some random strings through the analyzer */
     @Test
     public void testRandomStrings() throws Exception {
-        checkRandomData(random(), new CJKAnalyzer(), 10000*RANDOM_MULTIPLIER);
+        checkRandomData( random(), new CJKAnalyzer(), 10000 * RANDOM_MULTIPLIER );
     }
 }
-// @formatter:on
