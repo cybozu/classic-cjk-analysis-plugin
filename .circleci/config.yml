@@ -6,7 +6,7 @@ references:
 jobs:
   test:
     docker:
-      - image: docker-registry.dev.cybozu.xyz/kintone/circleci-build-base
+      - image: docker-registry.dev.cybozu.xyz/classic-cjk-tokenizer/circleci-build-base
     steps:
       - checkout
       - run: ./gradlew spotlessCheck test
