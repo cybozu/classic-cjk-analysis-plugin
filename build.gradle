@@ -17,7 +17,7 @@ dependencies {
     implementation group: 'org.elasticsearch', name: 'elasticsearch', version: ElasticsearchVersion
     // Use JUnit test framework
    
-    def junitJupiterVersion = '5.4.0'
+    def junitJupiterVersion = '5.4.2'
     testImplementation group: 'org.junit.jupiter', name :'junit-jupiter-api', version: junitJupiterVersion
     testImplementation group: 'org.junit.jupiter', name :'junit-jupiter-engine', version: junitJupiterVersion 
     testImplementation group: 'org.junit.vintage', name :'junit-vintage-engine', version: junitJupiterVersion 
