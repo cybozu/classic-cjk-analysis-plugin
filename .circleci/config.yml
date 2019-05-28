@@ -12,7 +12,7 @@ jobs:
       - run: ./gradlew spotlessCheck test
   renovate:
     docker:
-      - image: renovate/renovate:17.3.8
+      - image: renovate/renovate:17.16.5
         environment:
           RENOVATE_ENDPOINT: https://github.dev.cybozu.co.jp/api/v3
           # Debugg Options:
