@@ -9,7 +9,6 @@ targetCompatibility = 1.8
 apply plugin: 'distribution'
 
 def ElasticsearchVersion = '7.6.0'
-def ElasticsearchVersion = '6.8.6'
 version = '0.0.1'
 
 dependencies {
