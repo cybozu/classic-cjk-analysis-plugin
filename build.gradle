@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id "com.diffplug.spotless" version "5.7.0"
+    id "com.diffplug.spotless" version "5.9.0"
 }
 
 sourceCompatibility = 1.8
@@ -21,7 +21,7 @@ dependencies {
     testImplementation group: 'org.junit.jupiter', name :'junit-jupiter-api', version: junitJupiterVersion
     testImplementation group: 'org.junit.jupiter', name :'junit-jupiter-engine', version: junitJupiterVersion 
     testImplementation group: 'org.junit.vintage', name :'junit-vintage-engine', version: junitJupiterVersion 
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.17.1'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.18.1'
     testImplementation group: 'org.apache.lucene', name: 'lucene-test-framework', version: '8.6.2'
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
 }
