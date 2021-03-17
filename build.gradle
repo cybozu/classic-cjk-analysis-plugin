@@ -3,8 +3,8 @@ plugins {
     id "com.diffplug.spotless" version "5.10.2"
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
 apply plugin: 'distribution'
 
