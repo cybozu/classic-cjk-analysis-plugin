@@ -13,7 +13,7 @@ version = '0.0.1'
 
 dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation group: 'org.apache.lucene', name: 'lucene-analyzers-common', version: '8.7.0'
+    implementation group: 'org.apache.lucene', name: 'lucene-analyzers-common', version: '8.9.0'
     implementation group: 'org.elasticsearch', name: 'elasticsearch', version: ElasticsearchVersion
     // Use JUnit test framework
    
