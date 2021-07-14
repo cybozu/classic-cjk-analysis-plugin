@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "packageRules": [
+    {
+      "packagePatterns": ["^org.assertj", "^org.junit", "^junit", "^com.diffplug.spotless"],
+      "groupName": "DX library"
+    },
+    {
+      "packagePatterns": ["^org.elasticsearch", "^org.apache.lucene"],
+      "groupName": "Lucence & Elasticsearch"
+    }
+  ]
+}
