@@ -1,0 +1,13 @@
+Classic CJK Analysis Plugin
+Copyright 2021 Cybozu, Inc.
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+The Initial Developer of some parts of the framework, which are copied from, derived from, or
+inspired by Apache Solr(https://solr.apache.org/). All Rights Reserved.
+
+The  ClassicCJKAnalyzer.java, ClassicCJKTokenizer.java in
+src/main/java/org/apache/lucene/analysis/cjk
+was originally created by Apache Solr.
+© 2021 Cybozu, Inc.

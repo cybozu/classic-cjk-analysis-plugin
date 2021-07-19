@@ -12,3 +12,8 @@ bash ./etc/replace-version.sh 6.6.0
 ls build/dist/classic-cjk-analysis-plugin-0.0.1-es-6.6.0.zip 
 ```
 
+## License
+
+See [LICENSE](./LICENSE)
+
+
