@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id "com.diffplug.spotless" version "5.16.0"
+    id "com.diffplug.spotless" version "6.0.0"
 }
 
 sourceCompatibility = 11
