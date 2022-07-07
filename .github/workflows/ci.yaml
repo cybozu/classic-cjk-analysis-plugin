@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        jdk: [ '11', '17' ]
+        jdk: [ '17' ]
     name: CI using JDK ${{ matrix.jdk }}
     steps:
       - uses: actions/checkout@v3
