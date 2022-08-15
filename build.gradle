@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id "com.diffplug.spotless" version "6.8.0"
+    id "com.diffplug.spotless" version "6.9.1"
 }
 
 sourceCompatibility = 17
@@ -17,7 +17,7 @@ dependencies {
     implementation group: 'org.elasticsearch', name: 'elasticsearch', version: ElasticsearchVersion
     // Use JUnit test framework
    
-    def junitJupiterVersion = '5.8.2'
+    def junitJupiterVersion = '5.9.0'
     testImplementation group: 'org.junit.jupiter', name :'junit-jupiter-api', version: junitJupiterVersion
     testImplementation group: 'org.junit.jupiter', name :'junit-jupiter-engine', version: junitJupiterVersion 
     testImplementation group: 'org.junit.vintage', name :'junit-vintage-engine', version: junitJupiterVersion 
