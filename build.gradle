@@ -9,11 +9,12 @@ targetCompatibility = 17
 apply plugin: 'distribution'
 
 def ElasticsearchVersion = '8.4.3'
+def LuceneVersion = '9.3.0'
 version = '0.0.1'
 
 dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation group: 'org.apache.lucene', name: 'lucene-analyzers-common', version: '8.11.2'
+    implementation group: 'org.apache.lucene', name: 'lucene-analysis-common', version: LuceneVersion
     implementation group: 'org.elasticsearch', name: 'elasticsearch', version: ElasticsearchVersion
     // Use JUnit test framework
    
@@ -22,7 +23,7 @@ dependencies {
     testImplementation group: 'org.junit.jupiter', name :'junit-jupiter-engine', version: junitJupiterVersion 
     testImplementation group: 'org.junit.vintage', name :'junit-vintage-engine', version: junitJupiterVersion 
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.23.1'
-    testImplementation group: 'org.apache.lucene', name: 'lucene-test-framework', version: '9.4.1'
+    testImplementation group: 'org.apache.lucene', name: 'lucene-test-framework', version: LuceneVersion
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.23.1'
 }
 

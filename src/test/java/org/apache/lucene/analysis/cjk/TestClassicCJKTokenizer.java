@@ -20,8 +20,8 @@ package org.apache.lucene.analysis.cjk;
 import java.io.IOException;
 
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.BaseTokenStreamTestCase;
 import org.apache.lucene.analysis.CharArraySet;
+import org.apache.lucene.tests.analysis.BaseTokenStreamTestCase;
 import org.junit.Test;
 
 /**
@@ -29,7 +29,7 @@ import org.junit.Test;
  * "https://github.com/apache/lucene-solr/blob/releases/lucene-solr/4.7.2/lucene/analysis/common/src/test/org/apache/lucene/analysis/cjk/TestCJKTokenizer.java">Copy
  * From TestCJKTokenizer</a>
  */
-public class ClassicCJKTokenizerTest extends BaseTokenStreamTestCase {
+public class TestClassicCJKTokenizer extends BaseTokenStreamTestCase {
 
     class TestToken {
         String termText;
