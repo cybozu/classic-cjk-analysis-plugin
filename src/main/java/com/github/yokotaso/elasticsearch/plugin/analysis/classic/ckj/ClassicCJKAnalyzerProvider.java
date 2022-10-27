@@ -20,11 +20,10 @@ class ClassicCJKAnalyzerProvider extends AbstractIndexAnalyzerProvider<ClassicCJ
      * @param settings
      */
     public ClassicCJKAnalyzerProvider(IndexSettings indexSettings, Environment env, String name, Settings settings) {
-        super( indexSettings, name, settings );
+        super( name, settings );
         CharArraySet stopWords = Analysis.parseStopWords( env, settings, ClassicCJKAnalyzer.getDefaultStopSet() );
 
         analyzer = new ClassicCJKAnalyzer( stopWords );
-        analyzer.setVersion( indexSettings.getIndexVersionCreated().luceneVersion );
     }
 
     @Override
