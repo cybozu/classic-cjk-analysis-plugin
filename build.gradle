@@ -45,10 +45,10 @@ repositories {
 
 task zipPlugin(type: Zip) {
     dependsOn jar
-    archiveName = "${project.name}-${version}-es-${ElasticsearchVersion}.zip"
+    archiveFileName = "${project.name}-${version}-es-${ElasticsearchVersion}.zip"
     from 'src/main/dist', "$buildDir/libs"
 
-    destinationDir = file("$buildDir/dist") 
+    destinationDirectory = file("$buildDir/dist") 
 }
 
 spotless {
