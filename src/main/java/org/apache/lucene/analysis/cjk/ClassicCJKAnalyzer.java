@@ -19,6 +19,8 @@ package org.apache.lucene.analysis.cjk;
  */
 
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.CharArraySet;
@@ -27,6 +29,7 @@ import org.apache.lucene.analysis.Tokenizer;
 import org.apache.lucene.analysis.core.LowerCaseFilter;
 import org.apache.lucene.analysis.core.StopFilter;
 import org.apache.lucene.analysis.standard.StandardTokenizer;
+import org.apache.lucene.util.IOUtils;
 
 /**
  * <a href="https://github.com/apache/lucene-solr/blob/releases/lucene-solr/4.7.2/lucene/analysis/common/src/java/org/apache/lucene/analysis/cjk/CJKAnalyzer.java">Copy from CJKAnalyzer</a>
@@ -57,8 +60,11 @@ public final class ClassicCJKAnalyzer extends StopwordAnalyzerBase {
         static final CharArraySet DEFAULT_STOP_SET;
 
         static {
-            try {
-                DEFAULT_STOP_SET = loadStopwordSet(false, ClassicCJKAnalyzer.class, DEFAULT_STOPWORD_FILE, "#");
+            try (Reader reader =
+                         IOUtils.getDecodingReader(
+                                 IOUtils.requireResourceNonNull(ClassicCJKAnalyzer.class.getResourceAsStream(DEFAULT_STOPWORD_FILE), DEFAULT_STOPWORD_FILE),
+                                 StandardCharsets.UTF_8)) {
+                DEFAULT_STOP_SET = loadStopwordSet(reader);
             } catch (IOException ex) {
                 // default set should always be present as it is part of the
                 // distribution (JAR)

@@ -26,7 +26,7 @@ public class TestClassicCJKTokenizerSpec extends BaseTokenStreamTestCase {
     }
 
     public void checkCJKToken(final String str, final TestToken[] out_tokens) throws IOException {
-        Analyzer analyzer = new ClassicCJKAnalyzer( CharArraySet.EMPTY_SET );
+        Analyzer analyzer = new ClassicCJKAnalyzer( ClassicCJKAnalyzer.getDefaultStopSet() );
         String terms[] = new String[out_tokens.length];
         int startOffsets[] = new int[out_tokens.length];
         int endOffsets[] = new int[out_tokens.length];
@@ -148,5 +148,14 @@ public class TestClassicCJKTokenizerSpec extends BaseTokenStreamTestCase {
                 newToken( "様テ", 7, 9, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
                 newToken( "テス", 8, 10, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ),
                 newToken( "スト", 9, 11, ClassicCJKTokenizer.DOUBLE_TOKEN_TYPE ) } );
+    }
+
+    @Test
+    public void testStopWords() throws IOException {
+        var stopWords = "a\n" + "and\n" + "are\n" + "as\n" + "at\n" + "be\n" + "but\n" + "by\n" + "for\n" + "if\n"
+            + "in\n" + "into\n" + "is\n" + "it\n" + "no\n" + "not\n" + "of\n" + "on\n" + "or\n" + "s\n" + "such\n"
+            + "t\n" + "that\n" + "the\n" + "their\n" + "then\n" + "there\n" + "these\n" + "they\n" + "this\n" + "to\n"
+            + "was\n" + "will\n" + "with\n" + "www";
+        checkCJKToken( stopWords, new TestToken[] {} );
     }
 }
