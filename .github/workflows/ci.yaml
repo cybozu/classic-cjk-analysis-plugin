@@ -20,3 +20,5 @@ jobs:
         run: ./gradlew spotlessCheck test
       - name: build plugin
         run: ./gradlew clean zipPlugin 
+      - name: run plugin-descriptor test
+        run: bash etc/es-plugin-version-test.sh
