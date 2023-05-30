@@ -8,8 +8,8 @@ targetCompatibility = 17
 
 apply plugin: 'distribution'
 
-def ElasticsearchVersion = '8.7.1'
-def LuceneVersion = '9.5.0'
+def ElasticsearchVersion = '8.8.0'
+def LuceneVersion = '9.6.0'
 version = '0.0.1'
 
 dependencies {
@@ -25,6 +25,11 @@ dependencies {
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
     testImplementation group: 'org.apache.lucene', name: 'lucene-test-framework', version: LuceneVersion
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
+
+    // https://github.com/elastic/elasticsearch/issues/96360
+    configurations.all {
+        exclude group: 'org.elasticsearch', module: 'elasticsearch-preallocate'
+    }
 }
 
 test {
