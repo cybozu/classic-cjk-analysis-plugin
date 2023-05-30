@@ -25,6 +25,11 @@ dependencies {
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
     testImplementation group: 'org.apache.lucene', name: 'lucene-test-framework', version: LuceneVersion
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
+
+    // https://github.com/elastic/elasticsearch/issues/96360
+    configurations.all {
+        exclude group: 'org.elasticsearch', module: 'elasticsearch-preallocate'
+    }
 }
 
 test {
