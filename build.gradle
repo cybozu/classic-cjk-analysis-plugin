@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id "com.diffplug.spotless" version "6.22.0"
+    id "com.diffplug.spotless" version "6.25.0"
 }
 
 sourceCompatibility = 17
@@ -22,9 +22,9 @@ dependencies {
     testImplementation group: 'org.junit.jupiter', name :'junit-jupiter-api', version: junitJupiterVersion
     testImplementation group: 'org.junit.jupiter', name :'junit-jupiter-engine', version: junitJupiterVersion 
     testImplementation group: 'org.junit.vintage', name :'junit-vintage-engine', version: junitJupiterVersion 
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.25.2'
     testImplementation group: 'org.apache.lucene', name: 'lucene-test-framework', version: LuceneVersion
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.25.2'
 
     // https://github.com/elastic/elasticsearch/issues/96360
     configurations.all {
