@@ -9,7 +9,7 @@ targetCompatibility = 17
 apply plugin: 'distribution'
 
 def ElasticsearchVersion = '8.15.2'
-def LuceneVersion = '9.11.1'
+def LuceneVersion = '10.1.0'
 version = '0.0.1'
 
 dependencies {
