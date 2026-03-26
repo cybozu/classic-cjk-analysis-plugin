@@ -2,6 +2,7 @@
   "extends": [
     "config:base"
   ],
+  "minimumReleaseAge": "14 days",
   "packageRules": [
     {
       "packagePatterns": ["^org.assertj", "^org.junit", "^junit", "^com.diffplug.spotless"],
